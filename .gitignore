@@ -1,0 +1,30 @@
+# secrets
+.env
+.env.*
+*.key
+*.pem
+*secret*
+*credential*
+
+# runtime state
+sessions/
+logs/
+cron/jobs.json
+outputs/last_prompt.json
+outputs/last_response.json
+
+# caches / build artifacts
+__pycache__/
+*.pyc
+.cache/
+node_modules/
+dist/
+build/
+
+# generated files
+outputs/*.pptx
+skills/slide/outputs/*.pptx
+
+# OS
+.DS_Store
+Thumbs.db

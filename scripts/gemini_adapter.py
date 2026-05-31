@@ -80,6 +80,23 @@ class GeminiAdapter:
         return self._normalize_response_text(json.dumps(raw, ensure_ascii=False))
 
 
+def filter_history_for_prompt(history: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Geminiに送る履歴から、過去のGemini回答だけ除外する。
+
+    既存のGeminiチャットタブは再利用してよい。
+    ここではローカル sessions 由来の assistant ロールだけを除外する。
+    userロールとtoolロールは、会話継続やツール結果参照に必要なため残す。
+    """
+    filtered: list[dict[str, Any]] = []
+    for message in history:
+        if not isinstance(message, dict):
+            continue
+        if message.get("role") == "assistant":
+            continue
+        filtered.append(message)
+    return filtered
+
+
 def build_protocol_prompt(
     system_prompt: str,
     history: list[dict[str, Any]],
@@ -89,7 +106,7 @@ def build_protocol_prompt(
     payload = {
         "system": system_prompt,
         "tools": tools,
-        "history": history,
+        "history": filter_history_for_prompt(history),
         "user_message": user_message,
         "required_output_format": {
             "final": {"type": "final", "text": "string"},
