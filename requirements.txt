@@ -1,0 +1,10 @@
+playwright
+rich
+pypdf
+requests
+beautifulsoup4
+flask
+youtube_transcript_api
+python-pptx
+openpyxl
+python-docx

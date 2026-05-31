@@ -1,0 +1,16 @@
+[
+  {
+    "id": "every-1m-web",
+    "message": "` ヤフーファイナンスでトヨタの掲示板ページをWeb検索して`",
+    "session": "default",
+    "interval_seconds": 60,
+    "enabled": true,
+    "next_run_at": "2026-04-18T15:04:13.607386Z",
+    "last_run_at": "2026-04-18T15:03:13.607386Z",
+    "next_run_at_jp": "2026-04-19 00:04:13",
+    "last_run_at_jp": "2026-04-19 00:03:13",
+    "schedule_type": "interval",
+    "time_of_day": null,
+    "weekday": null
+  }
+]
